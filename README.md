@@ -11,7 +11,7 @@ de su copia de RapidMiner: Information Extraction, Text Processing y Web Mining.
 
 ## Instrucciones 
 
-Articulo/Tutorial con el proceso a seguir: https://medium.com/@esdanielgomez/clasificaci%C3%B3n-de-rese%C3%B1as-de-pel%C3%ADculas-a-trav%C3%A9s-de-rapidminer-9a622e5921bb
+Articulo/Tutorial con el proceso a seguir: https://medium.com/@esdanielgomez/clasificaci%C3%B3n-de-rese%C3%B1as-de-pel%C3%ADculas-a-trav%C3%A9s-de-rapidminer-9a622e5921bb.
 
 ## Autor
 
