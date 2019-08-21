@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.3.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.3.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="9.3.001" expanded="true" height="68" name="Read Excel Negativos" width="90" x="45" y="85">
+        <parameter key="excel_file" value="D:\Google Drive\Universidad de Cuenca\Minería de Textos_\Final\datasetComentariosNegativos.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information"/>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+      </operator>
+      <operator activated="true" class="filter_example_range" compatibility="9.3.001" expanded="true" height="82" name="Filter 650 Negativos" width="90" x="179" y="85">
+        <parameter key="first_example" value="1"/>
+        <parameter key="last_example" value="650"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <operator activated="true" class="split_data" compatibility="9.3.001" expanded="true" height="103" name="Split Negativos 50%" width="90" x="313" y="85">
+        <enumeration key="partitions">
+          <parameter key="ratio" value="0.5"/>
+          <parameter key="ratio" value="0.5"/>
+        </enumeration>
+        <parameter key="sampling_type" value="linear sampling"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="read_excel" compatibility="9.3.001" expanded="true" height="68" name="Read Excel Positivos" width="90" x="45" y="289">
+        <parameter key="excel_file" value="D:\Google Drive\Universidad de Cuenca\Minería de Textos_\Final\datasetComentariosPositivos.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information"/>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+      </operator>
+      <operator activated="true" class="filter_example_range" compatibility="9.3.001" expanded="true" height="82" name="Filter 650 Positivos" width="90" x="179" y="289">
+        <parameter key="first_example" value="1"/>
+        <parameter key="last_example" value="650"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <operator activated="true" class="split_data" compatibility="9.3.001" expanded="true" height="103" name="Split Positivos 50%" width="90" x="313" y="289">
+        <enumeration key="partitions">
+          <parameter key="ratio" value="0.5"/>
+          <parameter key="ratio" value="0.5"/>
+        </enumeration>
+        <parameter key="sampling_type" value="linear sampling"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="append" compatibility="9.3.001" expanded="true" height="103" name="Append (2)" width="90" x="514" y="289">
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+        <parameter key="merge_type" value="all"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.3.001" expanded="true" height="103" name="Write Excel Test" width="90" x="648" y="289">
+        <parameter key="excel_file" value="D:\Google Drive\Universidad de Cuenca\Minería de Textos_\Final\datasetTest.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <operator activated="true" class="append" compatibility="9.3.001" expanded="true" height="103" name="Append" width="90" x="514" y="136">
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+        <parameter key="merge_type" value="all"/>
+      </operator>
+      <operator activated="true" class="write_excel" compatibility="9.3.001" expanded="true" height="103" name="Write Excel Entrenamiento" width="90" x="648" y="136">
+        <parameter key="excel_file" value="D:\Google Drive\Universidad de Cuenca\Minería de Textos_\Final\datasetEntrenamiento.xlsx"/>
+        <parameter key="file_format" value="xlsx"/>
+        <enumeration key="sheet_names"/>
+        <parameter key="sheet_name" value="RapidMiner Data"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="number_format" value="#.0"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_op="Read Excel Negativos" from_port="output" to_op="Filter 650 Negativos" to_port="example set input"/>
+      <connect from_op="Filter 650 Negativos" from_port="example set output" to_op="Split Negativos 50%" to_port="example set"/>
+      <connect from_op="Split Negativos 50%" from_port="partition 1" to_op="Append" to_port="example set 1"/>
+      <connect from_op="Split Negativos 50%" from_port="partition 2" to_op="Append (2)" to_port="example set 1"/>
+      <connect from_op="Read Excel Positivos" from_port="output" to_op="Filter 650 Positivos" to_port="example set input"/>
+      <connect from_op="Filter 650 Positivos" from_port="example set output" to_op="Split Positivos 50%" to_port="example set"/>
+      <connect from_op="Split Positivos 50%" from_port="partition 1" to_op="Append" to_port="example set 2"/>
+      <connect from_op="Split Positivos 50%" from_port="partition 2" to_op="Append (2)" to_port="example set 2"/>
+      <connect from_op="Append (2)" from_port="merged set" to_op="Write Excel Test" to_port="input"/>
+      <connect from_op="Write Excel Test" from_port="through" to_port="result 2"/>
+      <connect from_op="Append" from_port="merged set" to_op="Write Excel Entrenamiento" to_port="input"/>
+      <connect from_op="Write Excel Entrenamiento" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
